@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="25px">
+
+    <TextView android:id="@+id/tv_tela"
+        android:text="@string/tv_text"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="10"/>
+    <Button android:id="@+id/btn_tela"
+        android:text="@string/btn_text"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="20"/>
+
+</LinearLayout>

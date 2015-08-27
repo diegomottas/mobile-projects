@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Aula03_Exemplo01</string>
+    <string name="btn_text">Meu Botão!</string>
+    <string name="tv_text">Meu Texto!</string>
+    <string name="lbl_numeros_a_calcular">Números a Calcular</string>
+    <string name="lbl_btn_resultado">Gerar Resultado</string>
+
+</resources>
