@@ -6,24 +6,42 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+import net.unesc.diego.exerciciocomponentes.cadastro.AdapterListView;
+import net.unesc.diego.exerciciocomponentes.cadastro.ItemListView;
+
+import java.util.ArrayList;
 
 public class CadastrarActivity extends AppCompatActivity {
+
+    private ArrayList<ItemListView> listItens = new ArrayList<ItemListView>();
+    private AdapterListView adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastrar);
+        setContentView(R.layout.activity_cadastrar2);
 
         Intent startIntent = getIntent();
         String usuario = startIntent.getStringExtra("usuario");
         String senha = startIntent.getStringExtra("senha");
 
-        Button btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+        final EditText txtDescricao = (EditText) findViewById(R.id.txtDescricao);
+        ImageButton btnAdicionar = (ImageButton) findViewById(R.id.btnAdicionar);
+        final ListView listViewItens = (ListView) findViewById(R.id.listViewItens);
+        adapter = new AdapterListView(getApplicationContext(), listItens);
+        listViewItens.setAdapter(adapter);
+
+        btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ItemListView itemListView = new ItemListView();
+                itemListView.setTexto(txtDescricao.getText().toString());
+                listItens.add(itemListView);
+                adapter.notifyDataSetChanged();
             }
         });
     }

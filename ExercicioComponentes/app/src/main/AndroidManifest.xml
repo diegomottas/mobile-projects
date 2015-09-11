@@ -18,7 +18,19 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/app_name">
+            android:label="@string/menu">
+        </activity>
+        <activity
+            android:name=".CadastrarActivity"
+            android:label="@string/cadastro">
+        </activity>
+        <activity
+            android:name=".Cadastrar2Activity"
+            android:label="@string/cadastro">
+        </activity>
+        <activity
+            android:name=".Consultar2Activity"
+            android:label="@string/consulta">
         </activity>
 
     </application>

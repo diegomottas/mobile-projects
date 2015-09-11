@@ -7,7 +7,11 @@
     <string name="login">Login</string>
 
     <string name="cadastrar">Cadastrar</string>
+    <string name="cadastro">Cadastro</string>
     <string name="consultar">Consultar</string>
+    <string name="consulta">Consulta</string>
     <string name="sair">Sair</string>
+    <string name="menu">Menu</string>
+    <string name="descricaoItem">Descrição do item</string>
 
 </resources>
