@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,19 +17,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activity.HomeActivity"
             android:label="@string/menu">
         </activity>
         <activity
-            android:name=".CadastrarActivity"
+            android:name=".Activity.CadastrarActivity"
             android:label="@string/cadastro">
         </activity>
         <activity
-            android:name=".Cadastrar2Activity"
+            android:name=".Activity.CadastrarUsuarioCadActivity"
             android:label="@string/cadastro">
         </activity>
         <activity
-            android:name=".Consultar2Activity"
+            android:name=".Activity.ConsultarUsuarioCadActivity"
             android:label="@string/consulta">
         </activity>
 

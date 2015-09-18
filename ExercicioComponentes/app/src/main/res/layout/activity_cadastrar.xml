@@ -14,6 +14,7 @@
             android:id="@+id/txtDescricao"
             android:layout_weight="1"
             android:hint="@string/descricaoItem"
+            android:inputType="textCapSentences"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
@@ -26,7 +27,7 @@
     </LinearLayout>
 
 
-    <ListView
+    <net.unesc.diego.exerciciocomponentes.Components.DragNDropListView
         android:id="@+id/listViewItens"
         android:divider="#000000"
         android:dividerHeight="1dp"

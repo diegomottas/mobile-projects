@@ -2,7 +2,7 @@
 <resources>
     <string-array name="sexo_array">
         <item></item>
-        <item>Masculino</item>
-        <item>Feminino</item>
+        <item>@string/masculino</item>
+        <item>@string/feminino</item>
     </string-array>
 </resources>

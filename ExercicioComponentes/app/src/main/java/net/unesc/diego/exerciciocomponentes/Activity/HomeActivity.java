@@ -1,4 +1,4 @@
-package net.unesc.diego.exerciciocomponentes;
+package net.unesc.diego.exerciciocomponentes.Activity;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,7 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
+import net.unesc.diego.exerciciocomponentes.R;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -36,12 +37,12 @@ public class HomeActivity extends AppCompatActivity {
         btnCadastrar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, Cadastrar2Activity.class);
+                Intent intent = new Intent(HomeActivity.this, CadastrarUsuarioCadActivity.class);
                 HomeActivity.this.startActivity(intent);
             }
         });
 
-        Intent notificationIntent = new Intent(HomeActivity.this, Cadastrar2Activity.class);
+        Intent notificationIntent = new Intent(HomeActivity.this, CadastrarUsuarioCadActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.android_small)

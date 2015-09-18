@@ -1,4 +1,4 @@
-package net.unesc.diego.exerciciocomponentes.cadastro;
+package net.unesc.diego.exerciciocomponentes.Components;
 
 public class ItemListView {
 

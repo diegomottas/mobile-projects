@@ -30,8 +30,8 @@
 
     <ToggleButton
         android:id="@+id/btnAtivo"
-        android:textOn="Ativo"
-        android:textOff="Inativo"
+        android:textOn="@string/ativo"
+        android:textOff="@string/inativo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 

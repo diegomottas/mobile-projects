@@ -1,17 +1,29 @@
 <resources>
+    <!-- Application wide -->
     <string name="app_name">ExercicioComponentes</string>
     <string name="action_settings">Opções</string>
 
+    <!-- Login -->
     <string name="usuario">Usuário</string>
     <string name="senha">Senha</string>
     <string name="login">Login</string>
 
+    <!-- Titles -->
     <string name="cadastrar">Cadastrar</string>
     <string name="cadastro">Cadastro</string>
     <string name="consultar">Consultar</string>
     <string name="consulta">Consulta</string>
     <string name="sair">Sair</string>
     <string name="menu">Menu</string>
+    <string name="ativo">Ativo</string>
+    <string name="inativo">Inativo</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
+
+    <!-- Fields and Strings -->
     <string name="descricaoItem">Descrição do item</string>
+
+    <!-- Validation Messages-->
+    <string name="msgInsiraDescricao">Por favor, insira uma descrição para adicionar.</string>
 
 </resources>
