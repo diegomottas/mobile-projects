@@ -33,11 +33,19 @@ public class HomeActivity extends AppCompatActivity {
                 HomeActivity.this.startActivity(intent);
             }
         });
-        Button btnCadastrar2 = (Button) findViewById(R.id.btnCadastrar2);
-        btnCadastrar2.setOnClickListener(new View.OnClickListener() {
+        Button btnConsultarUsuCad = (Button) findViewById(R.id.btnUsuario);
+        btnConsultarUsuCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CadastrarUsuarioCadActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ConsultarUsuarioCadActivity.class);
+                HomeActivity.this.startActivity(intent);
+            }
+        });
+        Button btnConsultarAlbum = (Button) findViewById(R.id.btnConsultarAlbum);
+        btnConsultarAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ConsultarAlbumActivity.class);
                 HomeActivity.this.startActivity(intent);
             }
         });

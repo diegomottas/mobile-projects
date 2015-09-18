@@ -75,7 +75,7 @@ public class CadastrarUsuarioCadActivity extends AppCompatActivity {
 
             if(usuarioCadastro != null){
                 txtNome.setText(usuarioCadastro.getNome());
-                txtNumeroCpf.setText(usuarioCadastro.getCpf());
+                txtNumeroCpf.setText(usuarioCadastro.getCpf().toString());
                 spinnerSexo.setSelection(usuarioCadastro.getSexo());
                 if(getString(R.string.ativo).equals(usuarioCadastro.getStatus())){
                     btnAtivo.setChecked(true);
@@ -101,7 +101,7 @@ public class CadastrarUsuarioCadActivity extends AppCompatActivity {
                 usuarioCadastro.setCpf(Integer.valueOf(txtNumeroCpf.getText().toString()));
                 usuarioCadastro.setSexo(spinnerSexo.getSelectedItemPosition());
                 usuarioCadastro.setStatus(btnAtivo.isChecked() ? btnAtivo.getTextOn().toString() : btnAtivo.getTextOff().toString());
-                usuarioCadastro.setIdade(Integer.valueOf(seekBarValue.getText().toString()));
+                usuarioCadastro.setIdade(Integer.valueOf(seekIdade.getProgress()));
 
                 long retorno = UsuarioCadastro.insertOrUpdate(banco, usuarioCadastro);
 

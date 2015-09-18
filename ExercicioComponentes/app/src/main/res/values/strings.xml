@@ -19,6 +19,10 @@
     <string name="inativo">Inativo</string>
     <string name="masculino">Masculino</string>
     <string name="feminino">Feminino</string>
+    <string name="consultaAlbum">Consulta de Álbuns</string>
+    <string name="cadastroAlbum">Cadastro de Álbuns</string>
+    <string name="albuns">Álbuns</string>
+    <string name="usuarios">Usuários</string>
 
     <!-- Fields and Strings -->
     <string name="descricaoItem">Descrição do item</string>

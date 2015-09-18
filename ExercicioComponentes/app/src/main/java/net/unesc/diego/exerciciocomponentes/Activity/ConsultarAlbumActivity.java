@@ -11,18 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import net.unesc.diego.exerciciocomponentes.Banco.Banco;
-import net.unesc.diego.exerciciocomponentes.Modelo.UsuarioCadastro;
+import net.unesc.diego.exerciciocomponentes.Modelo.Album;
 import net.unesc.diego.exerciciocomponentes.R;
 
 import java.util.List;
 
-public class ConsultarUsuarioCadActivity extends AppCompatActivity {
+public class ConsultarAlbumActivity extends AppCompatActivity {
 
     private Banco banco;
 
@@ -36,15 +37,15 @@ public class ConsultarUsuarioCadActivity extends AppCompatActivity {
         banco.open();
 
         //Recupera a listagem de objetos
-        List<UsuarioCadastro> listaUsuCad = UsuarioCadastro.getList(banco);
+        List<Album> listaAlbum = Album.getList(banco);
 
         ImageButton btnNovo = (ImageButton) findViewById(R.id.btnNovo);
         btnNovo.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConsultarUsuarioCadActivity.this, CadastrarUsuarioCadActivity.class);
-                ConsultarUsuarioCadActivity.this.startActivity(intent);
+                Intent intent = new Intent(ConsultarAlbumActivity.this, CadastrarAlbumActivity.class);
+                ConsultarAlbumActivity.this.startActivity(intent);
             }
         });
 
@@ -54,13 +55,13 @@ public class ConsultarUsuarioCadActivity extends AppCompatActivity {
         //Recupera o TextView que informa que não houveram resultados
         TextView tvSemResultado = (TextView) findViewById(R.id.tv_sem_resultado);
 
-        if(listaUsuCad != null && listaUsuCad.size() > 0){
+        if(listaAlbum != null && listaAlbum.size() > 0){
             //Possui resultados, então esconde o Texto e Mostra a ListView
             lvConsulta.setVisibility(View.VISIBLE);
             tvSemResultado.setVisibility(View.GONE);
 
             //Cria o ListAdapter que irá mostrar corretamente nosso Card com as informações
-            final ListAdapter customAdapter = new ListAdapter(this, R.layout.card, listaUsuCad);
+            final ListAdapter customAdapter = new ListAdapter(this, R.layout.card, listaAlbum);
 
             //Seta o ListAdapter na nossa ListView
             lvConsulta.setAdapter(customAdapter);
@@ -69,10 +70,10 @@ public class ConsultarUsuarioCadActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Pega o Objeto na posição
-                    UsuarioCadastro usuCad = (UsuarioCadastro) lvConsulta.getItemAtPosition(position);
+                    Album album = (Album) lvConsulta.getItemAtPosition(position);
 
-                    Intent intent = new Intent(ConsultarUsuarioCadActivity.this, CadastrarUsuarioCadActivity.class);
-                    intent.putExtra("cd_usu_cad", usuCad.getCodigo());
+                    Intent intent = new Intent(ConsultarAlbumActivity.this, CadastrarUsuarioCadActivity.class);
+                    intent.putExtra(Album.PKEY[0], album.getCodigo());
 
                     startActivity(intent);
                     finish();
@@ -83,15 +84,15 @@ public class ConsultarUsuarioCadActivity extends AppCompatActivity {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     //Pega o Objeto na posição
-                    UsuarioCadastro autor = (UsuarioCadastro) lvConsulta.getItemAtPosition(position);
+                    Album autor = (Album) lvConsulta.getItemAtPosition(position);
 
-                    long resultado = UsuarioCadastro.delete(banco, autor);
+                    long resultado = Album.delete(banco, autor);
 
                     //Verifica se foi removido com sucesso
                     if(resultado > 0) {
-                        Toast.makeText(ConsultarUsuarioCadActivity.this, "Removido com sucesso!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ConsultarAlbumActivity.this, "Removido com sucesso!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(ConsultarUsuarioCadActivity.this, "Problema ao remover.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ConsultarAlbumActivity.this, "Problema ao remover.", Toast.LENGTH_SHORT).show();
                     }
 
                     //Recria a Activity
@@ -108,9 +109,9 @@ public class ConsultarUsuarioCadActivity extends AppCompatActivity {
 
     }
 
-    private class ListAdapter extends ArrayAdapter<UsuarioCadastro> {
+    private class ListAdapter extends ArrayAdapter<Album> {
 
-        public ListAdapter(Context context, int resource, List<UsuarioCadastro> items) {
+        public ListAdapter(Context context, int resource, List<Album> items) {
             super(context, resource, items);
         }
 
@@ -124,14 +125,14 @@ public class ConsultarUsuarioCadActivity extends AppCompatActivity {
                 view = layoutInflater.inflate(R.layout.card, null);
             }
 
-            final UsuarioCadastro usuCad = getItem(position);
+            final Album album = getItem(position);
 
-            if (usuCad != null) {
+            if (album != null) {
                 TextView tvCdAutor = (TextView) view.findViewById(R.id.tv_codigo);
                 TextView tvDsAutor = (TextView) view.findViewById(R.id.tv_descricao);
 
-                tvCdAutor.setText(usuCad.getCodigo().toString());
-                tvDsAutor.setText(usuCad.getNome());
+                tvCdAutor.setText(album.getCodigo().toString());
+                tvDsAutor.setText(album.getDescricao());
             }
             return view;
 

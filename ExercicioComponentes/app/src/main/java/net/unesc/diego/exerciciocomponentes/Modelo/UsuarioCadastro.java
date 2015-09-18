@@ -19,8 +19,8 @@ public class UsuarioCadastro {
             "( cd_usu_cad      INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "  ds_usu_cad      TEXT    NOT NULL, " +
             "  nr_cpf          LONG," +
-            "  sexo            LONG" +
-            "  ds_ativo        TEXT" +
+            "  sexo            LONG," +
+            "  ds_status       TEXT," +
             "  nr_idade        LONG);";
 
     private Integer codigo;

@@ -12,15 +12,15 @@
         android:layout_height="wrap_content"
         android:text="@string/cadastrar"/>
     <Button
-        android:id="@+id/btnCadastrar2"
+        android:id="@+id/btnUsuario"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="cadastrar 2"/>
+        android:text="@string/usuarios"/>
     <Button
-        android:id="@+id/btnConsultar"
+        android:id="@+id/btnConsultarAlbum"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/consultar"/>
+        android:text="@string/albuns"/>
     <Button
         android:id="@+id/btnSair"
         android:layout_width="fill_parent"

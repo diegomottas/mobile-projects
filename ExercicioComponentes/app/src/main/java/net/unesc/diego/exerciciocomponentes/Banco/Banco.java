@@ -7,9 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
-/**
- * Created by wbertan on 12/04/15.
- */
 public class Banco {
     private       SQLiteDatabase banco;       //Instância do Banco para ser manipulada
     private final Context        context;     //Contexto que está sendo utilizado o banco

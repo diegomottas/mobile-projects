@@ -32,6 +32,14 @@
             android:name=".Activity.ConsultarUsuarioCadActivity"
             android:label="@string/consulta">
         </activity>
+        <activity
+            android:name=".Activity.ConsultarAlbumActivity"
+            android:label="@string/consultaAlbum">
+        </activity>
+        <activity
+            android:name=".Activity.CadastrarAlbumActivity"
+            android:label="@string/cadastroAlbum">
+        </activity>
 
     </application>
 

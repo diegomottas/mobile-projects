@@ -3,20 +3,33 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:layout_margin="25dp">
 
-    <ListView android:id="@+id/lv_consulta"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="#00000000"
-        android:dividerHeight="15dp"
-        android:divider="@android:color/transparent"
-        android:layout_below="@+id/tv_titulo"
-        android:choiceMode="singleChoice"
-        android:drawSelectorOnTop="true"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btnNovo"
+            android:src="@drawable/plus"
+            android:background="@android:color/transparent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <ListView android:id="@+id/lv_consulta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:dividerHeight="15dp"
+            android:divider="@android:color/transparent"
+            android:choiceMode="singleChoice"
+            android:drawSelectorOnTop="true"/>
+
+    </LinearLayout>
 
     <TextView android:id="@+id/tv_sem_resultado"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_titulo"
         android:text="Sem Resultados"
         android:gravity="center"
         android:textSize="35dp"/>

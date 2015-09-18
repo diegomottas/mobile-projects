@@ -1,6 +1,7 @@
 package net.unesc.diego.exerciciocomponentes.Banco;
 
 
+import net.unesc.diego.exerciciocomponentes.Modelo.Album;
 import net.unesc.diego.exerciciocomponentes.Modelo.UsuarioCadastro;
 
 /**
@@ -12,5 +13,5 @@ public class BancoConfiguracao {
     */
     public static final String  BANCO_NOME   = "bancoExemplo";
     public static final int     BANCO_VERSAO = 1;
-    public static final Class[] TABELAS      = new Class[]{UsuarioCadastro.class};
+    public static final Class[] TABELAS      = new Class[]{UsuarioCadastro.class, Album.class};
 }

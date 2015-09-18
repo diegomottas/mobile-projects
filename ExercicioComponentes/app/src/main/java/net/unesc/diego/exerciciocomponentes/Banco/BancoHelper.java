@@ -6,9 +6,6 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by wbertan on 12/04/15.
- */
 public class BancoHelper extends SQLiteOpenHelper {
 
     public BancoHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){

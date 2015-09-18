@@ -13,6 +13,7 @@
         android:text="Código"
         android:gravity="center_vertical"
         android:layout_marginLeft="5dp"/>
+
     <TextView android:id="@+id/tv_descricao"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
