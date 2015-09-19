@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -72,7 +71,7 @@ public class ConsultarAlbumActivity extends AppCompatActivity {
                     //Pega o Objeto na posição
                     Album album = (Album) lvConsulta.getItemAtPosition(position);
 
-                    Intent intent = new Intent(ConsultarAlbumActivity.this, CadastrarUsuarioCadActivity.class);
+                    Intent intent = new Intent(ConsultarAlbumActivity.this, CadastrarAlbumActivity.class);
                     intent.putExtra(Album.PKEY[0], album.getCodigo());
 
                     startActivity(intent);

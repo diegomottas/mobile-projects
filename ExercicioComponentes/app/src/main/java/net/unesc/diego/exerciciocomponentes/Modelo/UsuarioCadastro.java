@@ -125,8 +125,12 @@ public class UsuarioCadastro {
         Método de remover um Objeto no banco
      */
     public static long delete(Banco banco, UsuarioCadastro usuarioCadastro){
-        //Chama o método de Delete no banco passando a tabela e os valores
-        return banco.delete(TABELA, "cd_usu_cad = ?", new String[]{usuarioCadastro.getCodigo().toString()});
+        ArrayList<Album> lstAlbum = Album.getQuery(banco, "cd_usu_cad = ?", new String[]{usuarioCadastro.getCodigo().toString()});
+        if(lstAlbum.isEmpty()){
+            //Chama o método de Delete no banco passando a tabela e os valores
+            return banco.delete(TABELA, "cd_usu_cad = ?", new String[]{usuarioCadastro.getCodigo().toString()});
+        }
+        return -1;
     }
 
     /*

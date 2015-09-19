@@ -10,20 +10,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import net.unesc.diego.exerciciocomponentes.Banco.Banco;
 import net.unesc.diego.exerciciocomponentes.Modelo.Album;
+import net.unesc.diego.exerciciocomponentes.Modelo.UsuarioCadastro;
 import net.unesc.diego.exerciciocomponentes.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CadastrarAlbumActivity extends AppCompatActivity {
 
     private Banco banco;
+    private Album albumEdicao;
 
     private EditText txtDescricao;
     private EditText txtBanda;
+    private Spinner spinnerUsuarioCadastro;
 
     private Notification notification;
     private NotificationCompat.Builder builder;
@@ -35,18 +43,39 @@ public class CadastrarAlbumActivity extends AppCompatActivity {
 
         txtDescricao = (EditText) findViewById(R.id.txtDescricao);
         txtBanda = (EditText) findViewById(R.id.txtBanda);
+        spinnerUsuarioCadastro = (Spinner) findViewById(R.id.spinnerUsuarioCadastro);
         ImageButton btnSalvar = (ImageButton) findViewById(R.id.btnSalvar);
+
 
         banco = new Banco(getApplicationContext());
         banco.open();
 
+        List<UsuarioCadastro> lstBanco = UsuarioCadastro.getList(banco);
+        ArrayList<UsuarioCadastro> lstUsuarioCadastro = new ArrayList<UsuarioCadastro>();
+        lstUsuarioCadastro.add(new UsuarioCadastro());
+        lstUsuarioCadastro.addAll(lstBanco);
+        ArrayAdapter<UsuarioCadastro> arrayAdapter= new ArrayAdapter<UsuarioCadastro>(getApplicationContext(), R.layout.custom_spinner_item, lstUsuarioCadastro);
+        spinnerUsuarioCadastro.setAdapter(arrayAdapter);
+
         Bundle bundle = getIntent().getExtras();
         if(bundle != null && bundle.containsKey(Album.PKEY[0])){
-            Album album = Album.get(banco, Album.PKEY[0] + " = ?", new String[]{String.valueOf(bundle.getInt(Album.PKEY[0]))});
+            albumEdicao = Album.get(banco, Album.PKEY[0] + " = ?", new String[]{String.valueOf(bundle.getInt(Album.PKEY[0]))});
 
-            if(album != null){
-                txtDescricao.setText(album.getDescricao());
-                txtBanda.setText(album.getBanda());
+            if(albumEdicao != null){
+                txtDescricao.setText(albumEdicao.getDescricao());
+                txtBanda.setText(albumEdicao.getBanda());
+                if(albumEdicao.getUsuarioCadastro() != null){
+                    Integer position = null;
+                    for(int i = 0; i < lstUsuarioCadastro.size(); i++){
+                        if(albumEdicao.getUsuarioCadastro().getCodigo().equals(lstUsuarioCadastro.get(i).getCodigo())){
+                            position = i;
+                            break;
+                        }
+                    }
+                    if(position != null){
+                        spinnerUsuarioCadastro.setSelection(position);
+                    }
+                }
             }
         }
 
@@ -61,8 +90,13 @@ public class CadastrarAlbumActivity extends AppCompatActivity {
 
                 Album album = new Album();
 
+                if(albumEdicao != null){
+                    album.setCodigo(albumEdicao.getCodigo());
+                }
                 album.setDescricao(txtDescricao.getText().toString());
                 album.setBanda(txtBanda.getText().toString());
+                UsuarioCadastro selectedItem = (UsuarioCadastro) spinnerUsuarioCadastro.getSelectedItem();
+                album.setUsuarioCadastro(selectedItem);
 
                 long retorno = Album.insertOrUpdate(banco, album);
 

@@ -98,7 +98,9 @@ public class CadastrarUsuarioCadActivity extends AppCompatActivity {
                 UsuarioCadastro usuarioCadastro = new UsuarioCadastro();
 
                 usuarioCadastro.setNome(txtNome.getText().toString());
-                usuarioCadastro.setCpf(Integer.valueOf(txtNumeroCpf.getText().toString()));
+                if(txtNumeroCpf.getText() != null && !txtNumeroCpf.getText().toString().isEmpty()){
+                    usuarioCadastro.setCpf(Integer.valueOf(txtNumeroCpf.getText().toString()));
+                }
                 usuarioCadastro.setSexo(spinnerSexo.getSelectedItemPosition());
                 usuarioCadastro.setStatus(btnAtivo.isChecked() ? btnAtivo.getTextOn().toString() : btnAtivo.getTextOff().toString());
                 usuarioCadastro.setIdade(Integer.valueOf(seekIdade.getProgress()));
