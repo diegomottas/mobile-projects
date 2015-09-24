@@ -1,5 +1,6 @@
 package net.unesc.diego.exerciciocomponentes.Activity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -7,11 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
-import net.unesc.diego.exerciciocomponentes.Components.AdapterListView;
-import net.unesc.diego.exerciciocomponentes.Components.DragNDropListView;
+import com.terlici.dragndroplist.DragNDropCursorAdapter;
+import com.terlici.dragndroplist.DragNDropListView;
+
+import net.unesc.diego.exerciciocomponentes.Banco.Banco;
 import net.unesc.diego.exerciciocomponentes.Components.ItemListView;
+import net.unesc.diego.exerciciocomponentes.Modelo.UsuarioCadastro;
 import net.unesc.diego.exerciciocomponentes.R;
 
 import java.util.ArrayList;
@@ -19,18 +22,28 @@ import java.util.ArrayList;
 public class CadastrarActivity extends AppCompatActivity {
 
     private ArrayList<ItemListView> listItens = new ArrayList<ItemListView>();
-    private AdapterListView adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar);
 
+
         final EditText txtDescricao = (EditText) findViewById(R.id.txtDescricao);
         ImageButton btnAdicionar = (ImageButton) findViewById(R.id.btnAdicionar);
-        final DragNDropListView listViewItens = (DragNDropListView) findViewById(R.id.listViewItens);
-        adapter = new AdapterListView(getApplicationContext(), listItens);
-        listViewItens.setAdapter(adapter);
+        DragNDropListView list = (DragNDropListView)findViewById(android.R.id.list);
+
+        Banco banco = new Banco(getApplicationContext());
+        banco.open();
+        Cursor cursor = banco.query(UsuarioCadastro.TABELA);
+        DragNDropCursorAdapter adapter = new DragNDropCursorAdapter(getApplicationContext(),
+                R.layout.rowlayout,
+                cursor,
+                new String[]{UsuarioCadastro.COLUNAS[0], UsuarioCadastro.COLUNAS[1]},
+                new int[]{R.id.text},
+                R.id.handler);
+
+        list.setAdapter(adapter);
 
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +55,6 @@ public class CadastrarActivity extends AppCompatActivity {
                     ItemListView itemListView = new ItemListView();
                     itemListView.setTexto(str);
                     listItens.add(itemListView);
-                    adapter.notifyDataSetChanged();
                     txtDescricao.setText("");
                 }
             }

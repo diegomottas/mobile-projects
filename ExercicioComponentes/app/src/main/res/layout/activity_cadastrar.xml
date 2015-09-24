@@ -27,12 +27,11 @@
     </LinearLayout>
 
 
-    <net.unesc.diego.exerciciocomponentes.Components.DragNDropListView
-        android:id="@+id/listViewItens"
-        android:divider="#000000"
-        android:dividerHeight="1dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+    <com.terlici.dragndroplist.DragNDropListView
+        android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 
 </LinearLayout>

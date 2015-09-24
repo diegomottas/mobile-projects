@@ -12,11 +12,11 @@ import java.util.List;
 public class UsuarioCadastro {
 
     public static final String   TABELA  = "usuario_cadastro";
-    public static final String[] COLUNAS = new String[]{"cd_usu_cad", "ds_usu_cad", "nr_cpf", "sexo", "ds_status", "nr_idade"};
-    public static final String[] PKEY    = new String[]{"cd_usu_cad"};
+    public static final String[] COLUNAS = new String[]{"_id", "ds_usu_cad", "nr_cpf", "sexo", "ds_status", "nr_idade"};
+    public static final String[] PKEY    = new String[]{"_id"};
 
     public static final String   SQL_CREATE = "CREATE TABLE IF NOT EXISTS " + TABELA +
-            "( cd_usu_cad      INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "( _id      INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "  ds_usu_cad      TEXT    NOT NULL, " +
             "  nr_cpf          LONG," +
             "  sexo            LONG," +

@@ -104,7 +104,7 @@ public class CadastrarAlbumActivity extends AppCompatActivity {
                     Toast.makeText(CadastrarAlbumActivity.this, "Salvo com sucesso!", Toast.LENGTH_SHORT).show();
                     //Vai para a tela de consulta
                     Intent intent = new Intent(CadastrarAlbumActivity.this, ConsultarAlbumActivity.class);
-                    CadastrarAlbumActivity.this.startActivity(intent);
+                    startActivity(intent);
                     finish();
                 } else {
                     Toast.makeText(CadastrarAlbumActivity.this, "Problema ao inserir.", Toast.LENGTH_SHORT).show();
