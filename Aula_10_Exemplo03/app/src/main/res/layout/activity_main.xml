@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.wbertan.aula_10_exemplo03.widget.PlacarView
+        android:id="@+id/placar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:time1="Criciúma"
+        app:time2="Flamengo"
+        app:logo_time1="@drawable/flag_criciuma"
+        app:logo_time2="@drawable/flag_flamengo"/>
+
+    <com.wbertan.aula_10_exemplo03.widget.PlacarView
+        android:id="@+id/placar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:time1="Gremio"
+        app:time2="Internacional"
+        app:logo_time1="@drawable/flag_gremio"
+        app:logo_time2="@drawable/flag_inter"/>
+
+</LinearLayout>
