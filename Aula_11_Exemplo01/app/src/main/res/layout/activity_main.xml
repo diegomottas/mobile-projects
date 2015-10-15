@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    android:background="@color/activity_background" >
+
+    <EditText
+        android:id="@+id/edt_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:hint="Qual o seu nome?"
+        android:background="@drawable/edittext_selector">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/edt_cidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_nome"
+        android:layout_below="@+id/edt_nome"
+        android:hint="Qual a sua cidade?"
+        android:background="@drawable/edittext_selector"
+        android:layout_marginTop="20dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/edt_bairro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_cidade"
+        android:layout_below="@+id/edt_cidade"
+        android:hint="Qual o seu bairro?"
+        android:background="@drawable/edittext_selector"
+        android:layout_marginTop="20dp"
+        android:enabled="false">
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_bairro"
+        android:layout_below="@+id/edt_bairro"
+        android:textColor="@color/button_textColor"
+        android:text="OK"
+        android:background="@drawable/button_selector"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btn_cancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_ok"
+        android:layout_below="@+id/btn_ok"
+        android:textColor="@color/button_textColor"
+        android:text="Cancelar"
+        android:background="@drawable/button_selector"
+        android:layout_marginTop="20dp"
+        android:enabled="false"/>
+
+</RelativeLayout>

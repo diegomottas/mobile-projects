@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="activity_background">#ecf0f1</color>
+
+    <color name="button_background_enabled">#e67e22</color>
+    <color name="button_background_enabled_pressed">#d35400</color>
+    <color name="button_background_disabled">#95a5a6</color>
+    <color name="button_textColor">#FFF</color>
+
+    <color name="edittext_border_enabled">#95a5a6</color>
+    <color name="edittext_border_enabled_focused">#2980b9</color>
+    <color name="edittext_border_disabled">#2c3e50</color>
+</resources>
