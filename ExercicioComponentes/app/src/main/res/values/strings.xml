@@ -2,6 +2,7 @@
     <!-- Application wide -->
     <string name="app_name">ExercicioComponentes</string>
     <string name="action_settings">Opções</string>
+    <string name="action_save">Salvar</string>
 
     <!-- Login -->
     <string name="usuario">Usuário</string>

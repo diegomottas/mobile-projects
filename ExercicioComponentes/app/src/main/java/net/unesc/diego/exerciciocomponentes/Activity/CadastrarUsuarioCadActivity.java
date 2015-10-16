@@ -89,33 +89,7 @@ public class CadastrarUsuarioCadActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                builder.setContentText("Nome: " + txtNome.getText().toString());
-                notification = builder.build();
-                notification.flags |= Notification.FLAG_AUTO_CANCEL;
-                notificationManager.notify(0, notification);
-
-                UsuarioCadastro usuarioCadastro = new UsuarioCadastro();
-
-                usuarioCadastro.setNome(txtNome.getText().toString());
-                if(txtNumeroCpf.getText() != null && !txtNumeroCpf.getText().toString().isEmpty()){
-                    usuarioCadastro.setCpf(Integer.valueOf(txtNumeroCpf.getText().toString()));
-                }
-                usuarioCadastro.setSexo(spinnerSexo.getSelectedItemPosition());
-                usuarioCadastro.setStatus(btnAtivo.isChecked() ? btnAtivo.getTextOn().toString() : btnAtivo.getTextOff().toString());
-                usuarioCadastro.setIdade(Integer.valueOf(seekIdade.getProgress()));
-
-                long retorno = UsuarioCadastro.insertOrUpdate(banco, usuarioCadastro);
-
-                if(retorno > 0) {
-                    Toast.makeText(CadastrarUsuarioCadActivity.this, "Salvo com sucesso!", Toast.LENGTH_SHORT).show();
-                    //Vai para a tela de consulta
-                    Intent intent = new Intent(CadastrarUsuarioCadActivity.this, ConsultarUsuarioCadActivity.class);
-                    CadastrarUsuarioCadActivity.this.startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(CadastrarUsuarioCadActivity.this, "Problema ao inserir.", Toast.LENGTH_SHORT).show();
-                }
+                salvar();
 
             }
         });
@@ -133,7 +107,7 @@ public class CadastrarUsuarioCadActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_salvar, menu);
         return true;
     }
 
@@ -149,6 +123,41 @@ public class CadastrarUsuarioCadActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_save) {
+            salvar();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void salvar(){
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        builder.setContentText("Nome: " + txtNome.getText().toString());
+        notification = builder.build();
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notificationManager.notify(0, notification);
+
+        UsuarioCadastro usuarioCadastro = new UsuarioCadastro();
+
+        usuarioCadastro.setNome(txtNome.getText().toString());
+        if(txtNumeroCpf.getText() != null && !txtNumeroCpf.getText().toString().isEmpty()){
+            usuarioCadastro.setCpf(Integer.valueOf(txtNumeroCpf.getText().toString()));
+        }
+        usuarioCadastro.setSexo(spinnerSexo.getSelectedItemPosition());
+        usuarioCadastro.setStatus(btnAtivo.isChecked() ? btnAtivo.getTextOn().toString() : btnAtivo.getTextOff().toString());
+        usuarioCadastro.setIdade(Integer.valueOf(seekIdade.getProgress()));
+
+        long retorno = UsuarioCadastro.insertOrUpdate(banco, usuarioCadastro);
+
+        if(retorno > 0) {
+            Toast.makeText(CadastrarUsuarioCadActivity.this, "Salvo com sucesso!", Toast.LENGTH_SHORT).show();
+            //Vai para a tela de consulta
+            Intent intent = new Intent(CadastrarUsuarioCadActivity.this, ConsultarUsuarioCadActivity.class);
+            CadastrarUsuarioCadActivity.this.startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(CadastrarUsuarioCadActivity.this, "Problema ao inserir.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
