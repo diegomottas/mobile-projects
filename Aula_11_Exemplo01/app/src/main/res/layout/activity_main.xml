@@ -62,4 +62,16 @@
         android:layout_marginTop="20dp"
         android:enabled="false"/>
 
+    <ListView
+        android:layout_marginTop="15dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/btn_cancelar"
+        android:layout_below="@id/btn_cancelar"
+        android:id="@+id/listView"
+        android:listSelector="@drawable/list_selector"
+        android:divider="@null"
+        android:dividerHeight="0dp">
+    </ListView>
+
 </RelativeLayout>

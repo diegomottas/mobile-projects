@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
     <corners
-        android:bottomLeftRadius="30dp"
-        android:bottomRightRadius="0dp"
-        android:topLeftRadius="0dp"
-        android:topRightRadius="30dp" >
+        android:radius="10dp">
     </corners>
 
-    <solid android:color="@color/button_background_enabled"/>
+    <stroke
+        android:width="3dp"
+        android:color="@color/button_enabled">
+    </stroke>
+
+    <solid android:color="@android:color/transparent"/>
+
+    <padding
+        android:top="8dp"
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="8dp">
+    </padding>
 </shape>
 

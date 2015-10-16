@@ -2,12 +2,16 @@
 <resources>
     <color name="activity_background">#ecf0f1</color>
 
-    <color name="button_background_enabled">#e67e22</color>
-    <color name="button_background_enabled_pressed">#d35400</color>
-    <color name="button_background_disabled">#95a5a6</color>
-    <color name="button_textColor">#FFF</color>
+    <color name="button_enabled">#2dcc7c</color>
+    <color name="button_enabled_pressed">#248d56</color>
+    <color name="button_disabled">#95a5a6</color>
+    <color name="button_textColor">#000000</color>
 
-    <color name="edittext_border_enabled">#95a5a6</color>
-    <color name="edittext_border_enabled_focused">#2980b9</color>
-    <color name="edittext_border_disabled">#2c3e50</color>
+    <color name="edittext_border_enabled">#11a82b</color>
+    <color name="edittext_border_enabled_focused">#11c233</color>
+    <color name="edittext_border_disabled">#bbbbbb</color>
+
+    <color name="row_border">#166ba8</color>
+    <color name="row_border_focused">#153361</color>
+    <color name="row_background_focused">#c4eeff</color>
 </resources>

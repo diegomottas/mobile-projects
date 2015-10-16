@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <stroke
-        android:width="2dp"
-        android:color="@color/edittext_border_disabled" />
-
-    <padding
-        android:bottom="8dp"
-        android:left="8dp"
-        android:right="8dp"
-        android:top="8dp" />
-
-</shape>
-
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:top="-5dp" android:right="-5dp" android:left="-5dp">
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:dashGap="10px"
+                android:dashWidth="10px"
+                android:width="4dp"
+                android:color="@color/edittext_border_disabled" />
+        </shape>
+    </item>
+</layer-list>
