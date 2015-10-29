@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor" >#D32F2F</color>
+    <color name="primaryColorDark" >#B71C1C</color>
+    <color name="accentColor" >#F44336</color>
+
+    <color name="white" >#FFFFFF</color>
+    <color name="black" >#000000</color>
+    <color name="lightgrey">#E9E9E9</color>
+
+    <color name="red_material">#F44336</color>
+    <color name="red_material_900">#B71C1C</color>
+    <color name="red_material_800">#C62828</color>
+    <color name="red_material_700">#D32F2F</color>
+    <color name="red_material_600">#E53935</color>
+    <color name="red_material_400">#EF5350</color>
+    <color name="red_material_300">#E57373</color>
+    <color name="red_material_200">#EF9A9A</color>
+    <color name="red_material_100">#FFCDD2</color>
+
+    <color name="amber_material">#FFC107</color>
+    <color name="amber_material_400">#FFCA28</color>
+    <color name="amber_material_300">#FFD54F</color>
+    <color name="amber_material_200">#FFE082</color>
+    <color name="amber_material_100">#FFECB3</color>
+
+    <color name="blue_material">#2196F3</color>
+
+    <color name="cyan_material" >#00BCD4</color>
+
+    <color name="teal_material">#009688</color>
+
+</resources>
