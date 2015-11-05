@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
         TextView tv_hora_anoitecer = (TextView) findViewById(R.id.tv_hora_anoitecer);
 
         //Recupera o JSON da URL
-        String json = HttpServlet.call("http://api.openweathermap.org/data/2.5/weather?units=metric&q=criciuma");
+        String json = HttpServlet.call("http://api.openweathermap.org/data/2.5/weather?q=Criciuma,br&appid=bd82977b86bf27fb59a04b61b657fb6f");
 
         //Cria o nosso Objeto Clima
         Clima clima = new Clima(json);
