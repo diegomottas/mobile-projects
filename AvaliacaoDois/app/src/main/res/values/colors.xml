@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="activity_background">#ecf0f1</color>
+
+    <color name="button_enabled">#2dcc7c</color>
+    <color name="button_enabled_pressed">#248d56</color>
+    <color name="button_disabled">#95a5a6</color>
+    <color name="button_textColor">#000000</color>
+
+    <color name="edittext_border_enabled">#11a82b</color>
+    <color name="edittext_border_enabled_focused">#11c233</color>
+    <color name="edittext_border_disabled">#bbbbbb</color>
+
+    <color name="row_border">#166ba8</color>
+    <color name="row_border_focused">#153361</color>
+    <color name="row_background_focused">#c4eeff</color>
+</resources>
