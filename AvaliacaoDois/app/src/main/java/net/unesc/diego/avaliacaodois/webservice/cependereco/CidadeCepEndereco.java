@@ -1,6 +1,6 @@
 package net.unesc.diego.avaliacaodois.webservice.cependereco;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.Serializable;
 

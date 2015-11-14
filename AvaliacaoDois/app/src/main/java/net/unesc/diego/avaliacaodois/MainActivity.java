@@ -1,10 +1,13 @@
 package net.unesc.diego.avaliacaodois;
 
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,10 +20,16 @@ public class MainActivity extends AppCompatActivity {
     private Button btnProcurar;
     private TextView tvDescricao;
 
+    private Animation animationAlphaFadeOut;
+    private Animation animationAlphaFadeIn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         txtCep = (EditText) findViewById(R.id.txtCep);
         btnProcurar = (Button) findViewById(R.id.btnProcurar);
@@ -31,7 +40,45 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String cep = txtCep.getText().toString();
                 CepEndereco cepEndereco = CepEndereco.getCepEndereco(cep);
-                tvDescricao.setText(cepEndereco.getCidade());
+                if(cepEndereco != null){
+                    StringBuilder endereco = new StringBuilder();
+                    if(cepEndereco.getTipoDeLogradouro() != null){
+                        endereco.append(cepEndereco.getTipoDeLogradouro());
+                        endereco.append(" ");
+                    }
+                    endereco.append(cepEndereco.getLogradouro());
+                    endereco.append(", ");
+                    endereco.append("Bairro ");
+                    endereco.append(cepEndereco.getBairro());
+                    endereco.append(", ");
+                    endereco.append(cepEndereco.getCidade());
+                    endereco.append(", ");
+                    endereco.append(cepEndereco.getEstado());
+                    tvDescricao.setText(endereco.toString());
+
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animacao_escala01);
+                    tvDescricao.startAnimation(animation);
+
+                    animationAlphaFadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animacao_fade_out);
+                    animationAlphaFadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animacao_fade_in);
+
+                    animationAlphaFadeOut.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            btnProcurar.startAnimation(animationAlphaFadeIn);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                    btnProcurar.startAnimation(animationAlphaFadeOut);
+                }
             }
         });
     }

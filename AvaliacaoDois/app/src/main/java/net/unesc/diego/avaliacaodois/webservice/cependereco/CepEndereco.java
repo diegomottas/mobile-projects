@@ -1,17 +1,21 @@
 package net.unesc.diego.avaliacaodois.webservice.cependereco;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import org.jboss.resteasy.client.jaxrs.ResteasyClient;
-import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
 
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -112,14 +116,47 @@ public class CepEndereco implements Serializable {
         this.numeroLogradouro = numeroLogradouro;
     }
 
-    public static CepEndereco getCepEndereco(String cep) throws ProcessingException, NotFoundException {
-        ResteasyClient client = (ResteasyClient) new ResteasyClientBuilder()
-                .establishConnectionTimeout(10, TimeUnit.SECONDS)
-                .socketTimeout(10, TimeUnit.SECONDS)
-                .build();
-        WebTarget target = client.target("http://api.postmon.com.br/v1/cep/" + cep);
-        CepEndereco response = target.request(MediaType.APPLICATION_JSON_TYPE).get(CepEndereco.class);
-        return response;
+    public static CepEndereco getCepEndereco(String cep) {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpContext localContext = new BasicHttpContext();
+        HttpGet httpGet = new HttpGet("http://api.postmon.com.br/v1/cep/" + cep);
+        String text = null;
+        try {
+
+            HttpResponse response = httpClient.execute(httpGet, localContext);
+
+            HttpEntity entity = response.getEntity();
+
+            text = getASCIIContentFromEntity(entity);
+
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(text, CepEndereco.class);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
+
+    private static String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
+
+        InputStream in = entity.getContent();
+
+        StringBuffer out = new StringBuffer();
+        int n = 1;
+        while (n>0) {
+            byte[] b = new byte[4096];
+
+            n =  in.read(b);
+
+            if (n>0) out.append(new String(b, 0, n));
+
+        }
+
+        return out.toString();
+
+    }
+
 
 }
