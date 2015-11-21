@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AvaliacaoTres</string>
+    <string name="action_clear">Limpar</string>
+
+    <string name="label_aberto">Aberto</string>
+    <string name="label_fechado">Fechado</string>
+</resources>
