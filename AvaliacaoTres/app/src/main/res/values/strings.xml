@@ -4,4 +4,6 @@
 
     <string name="label_aberto">Aberto</string>
     <string name="label_fechado">Fechado</string>
+
+    <string name="msg_informe_descricao">Por favor, informe uma descrição</string>
 </resources>

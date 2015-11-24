@@ -5,6 +5,8 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:background="@drawable/row_selector"
+    android:layout_margin="3dip"
+    android:padding="8dip"
     >
 
     <ImageView
@@ -22,6 +24,6 @@
         android:layout_height="wrap_content"
         android:text="Large Text"
         android:textColor="#000"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textSize="18dip"/>
 
 </LinearLayout>

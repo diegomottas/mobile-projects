@@ -92,12 +92,19 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ItemListaCompras itemListaCompras = new ItemListaCompras();
-                itemListaCompras.setDescricao(txtDescricao.getText().toString());
+                String descricao = txtDescricao.getText().toString();
+                if(descricao == null || descricao.isEmpty()){
+                    txtDescricao.setError(getString(R.string.msg_informe_descricao));
+                }else{
+                    ItemListaCompras itemListaCompras = new ItemListaCompras();
+                    itemListaCompras.setDescricao(descricao);
 
-                ItemListaCompras.insert(banco, itemListaCompras);
+                    ItemListaCompras.insert(banco, itemListaCompras);
 
-                recarregarCursor();
+                    recarregarCursor();
+                    txtDescricao.setText("");
+                    txtDescricao.setError(null);
+                }
             }
         });
     }
